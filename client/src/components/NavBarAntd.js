@@ -39,7 +39,7 @@ const NavBarAntd = () => {
           <Link to="/trbc_00/">Home</Link>
         </Menu.Item>
 
-        <SubMenu key="aboutUs" style={{ fontSize: "17px" }} title="About Us">
+        <SubMenu key="aboutUs" title="About Us">
           {/* Need find way to change font */}
           <Menu.Item key="aboutUs1">
             <Link to="/trbc_00/vision">Vision & Mission</Link>
@@ -54,7 +54,7 @@ const NavBarAntd = () => {
             <Link to="/trbc_00/statement">Statement of Faith</Link>
           </Menu.Item>
         </SubMenu>
-        <SubMenu key="joinUs" style={{ fontSize: "17px" }} title="Join Us">
+        <SubMenu key="joinUs" title="Join Us">
           {/* Need find way to change font */}
           <Menu.Item key="services">
             <Link to="/trbc_00/services">Services</Link>
@@ -63,7 +63,6 @@ const NavBarAntd = () => {
 
           <SubMenu
             key="tc"
-            style={{ fontSize: "17px" }}
             title="Teo Chew/Chinese Congregation"
           >
             {/* Need find way to change font */}
@@ -87,7 +86,6 @@ const NavBarAntd = () => {
           </SubMenu>
           <SubMenu
             key="sunset"
-            style={{ fontSize: "17px" }}
             title="Sunset Congregation"
           >
             {/* Need find way to change font */}
@@ -111,7 +109,6 @@ const NavBarAntd = () => {
           </SubMenu>
           <SubMenu
             key="english"
-            style={{ fontSize: "17px" }}
             title="English Congregation"
           >
             {/* Need find way to change font */}
