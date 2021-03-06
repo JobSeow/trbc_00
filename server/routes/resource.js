@@ -3,19 +3,19 @@ const router = express.Router();
 
 
 router.get("/", (req, res) => {
-    Outreach.find({}).then((data) => {
+    Resource.find({}).then((data) => {
     res.json(data);
   });
 });
 
 router.post("/", (req, res) => {
-  const outreach = new Outreach({
+  const resource = new Resource({
     title: req.body.title,
     description: req.body.description,
-    image: req.body.image,
+    file: req.body.file,
   });
 
-  outreach
+  resource
     .save()
 
     .then((data) => {
@@ -30,21 +30,15 @@ router.put("/", (req, res) => {
   const update ={
     title: req.body.title,
     description: req.body.description,
-    image: req.body.image,
+    file: req.body.file,
   }
-   Outreach.findByIdAndUpdate({ _id: req.body._id }, update, (err,data)=>{
+  Resource.findByIdAndUpdate({ _id: req.body._id }, update, (err,data)=>{
        if(err){
        console.log(err)
        }
    });
-  const doc=  Outreach.findOne({_id: req.body._id});
+  const doc=  Resource.findOne({_id: req.body._id});
   console.log(doc)
-//   res.json(doc);
 
-
-
-//   doc.save().then((data) => {
-//     res.json(data);
-//   });
 });
 module.exports = router;

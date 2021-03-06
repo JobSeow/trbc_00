@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../components/Banner";
+import Banner from "../../components/Banner";
 import { Link } from "react-router-dom";
 import { Card, Avatar, Typography, Row, Col, Button } from "antd";
 import {
@@ -8,7 +8,7 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 // Similiar to Our History Page
-import churchWide from "../imgs/church-wide.jpg";
+import churchWide from "../../imgs/church-wide.jpg";
 
 function Admin() {
   const { Meta } = Card;
@@ -44,7 +44,7 @@ function Admin() {
     },
     {
       title: "Resources",
-      children: ["Edit"],
+      children: ["Resource"],
     },
   ];
   var count = 0

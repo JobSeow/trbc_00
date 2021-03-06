@@ -1,14 +1,24 @@
-const mongoose = require('mongoose')
-const TeamSchema = mongoose.Schema({
-    name:{
-        type:String,
-        required:true
-    },
-    designation:{
-        type:String,
-        required:true
-    },image:String
+class Team {
+  constructor(db) {
+    this.collection = db.collection("teams");
+  }
+  async getAll() {
+    const toReturn = await this.collection.find({});
+    return toReturn;
+  }
+  async setTeam(document) {
+    const toReturn = await this.collection.insertOne(document);
+    return toReturn;
+  }
+  async updateTeam(filter, document) {
+    const toReturn = await this.collection.updateOne(filter, document);
 
+    return toReturn;
+  }
+  async deleteTeam(document) {
+    const toReturn = await this.collection.deleteOne(document);
 
-})
-module.exports = mongoose.model('Team',TeamSchema)
+    return toReturn;
+  }
+}
+module.exports = Team;

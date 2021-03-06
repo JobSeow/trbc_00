@@ -21,8 +21,13 @@ import Event from "./pages/Event";
 import Services from "./pages/Services";
 import EventByService from "./pages/EventByService";
 import Home from "./pages/Home";
-import Edit from "./pages/Edit";
-import Admin from "./pages/Admin";
+
+import Admin from "./pages/admin/Admin";
+
+
+// Backend
+import EditHome from "./pages/admin/EditHome";
+import EditTeam from "./pages/admin/EditTeam";
 function App() {
   return (
     <Router>
@@ -54,8 +59,10 @@ function App() {
           />
           <Route path="/trbc_00/resources" component={Resources} />
           <Route path="/trbc_00/admin" exact  component={Admin} />
-          <Route exact path="/trbc_00/admin/:id" component={Edit} />
+          <Route exact path="/trbc_00/admin/home" component={EditHome} />
+          <Route exact path="/trbc_00/admin/team" component={EditTeam} />
         </Switch>
+        <br/>
 
         <ContactFooter />
       </div>

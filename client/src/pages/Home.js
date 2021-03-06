@@ -27,7 +27,7 @@ function Home() {
         <div className="top-img-title">Thomson Road Baptist Church</div>
       </div>
 
-      <Carousel autoplay>
+      {/* <Carousel autoplay>
         <div>
           <Image
             style={contentStyle}
@@ -40,7 +40,7 @@ function Home() {
             src={require('../imgs/home/christmas_event2020.png')}
           />
         </div>
-      </Carousel>
+      </Carousel> */}
     </div>
   );
 }

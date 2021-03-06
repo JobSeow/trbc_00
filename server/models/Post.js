@@ -1,13 +1,11 @@
-const mongoose = require('mongoose')
 
-
-
-const PostSchema = mongoose.Schema({
-    title:{
-        type:String,
-        required:true
-    },
-    description:String
-
-})
-module.exports = mongoose.model('Posts',PostSchema)
+class Post {
+    constructor(db) {
+      this.collection = db.collection('posts');
+    }
+    async getPost() {
+      const newPost = await this.collection.find({})
+      return newPost;
+    }
+  }
+  module.exports = Post;

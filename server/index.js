@@ -1,19 +1,17 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const mongo = require('./mongo');
 const cors = require('cors')
+var bodyParser = require('body-parser')
 require("dotenv/config");
 
-
-
-const postsRoute = require("./routes/posts");
+const postRoute = require("./routes/PostRoute");
 const userRoute = require("./routes/user");
-const teamRoute = require("./routes/team");
+const teamRoute = require("./routes/TeamRoute");
 const outreachRoute = require("./routes/outreach");
 app.use(cors())
-app.use(bodyParser.json());
-app.use("/posts", postsRoute);
+app.use(bodyParser.json())
+app.use("/posts", postRoute);
 app.use("/user", userRoute);
 app.use("/team", teamRoute);
 app.use("/outreach", outreachRoute);
@@ -23,18 +21,16 @@ app.get("/", (req, res) => {
   res.send("we are home");
 });
 
+async function start() {
+  // other app startup stuff...
+  await mongo.init();
+  // other app startup stuff...
+}
+start();
 
 
-mongoose.connect(
-  "mongodb://JobSeow:27Jalanmaskuning@trbccluster-shard-00-00.lczf3.mongodb.net:27017,trbccluster-shard-00-01.lczf3.mongodb.net:27017,trbccluster-shard-00-02.lczf3.mongodb.net:27017/trbc?ssl=true&replicaSet=atlas-19on5g-shard-0&authSource=admin&retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => {
-    console.log("connected to DB");
-  }
-);
-mongoose.connection.on("connected", () => {
-  console.log("connected");
-});
+app.listen(8080);
+
 
 //start listening to the server
-app.listen(8080);
+

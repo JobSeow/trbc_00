@@ -28,7 +28,7 @@ import axios from "axios";
 
 function Edit(props) {
   console.log(props.location.state);
-  const { Meta } = Card;
+
   const { Title } = Typography;
   const [pageName, setPageName] = useState(props.location.state);
   const [data, setData] = useState();
@@ -40,6 +40,10 @@ function Edit(props) {
     Outreach: {
       key: "Outreach",
       fields: ["title", "description", "image"],
+    },
+    Resources: {
+      key: "Resources",
+      fields: ["title", "description", "file"],
     },
   };
   const specialFields = ["image"];
@@ -57,10 +61,7 @@ function Edit(props) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-  // const setRecordToEdit= (record)=>{
-  //   console.log(record)
-  //   console.log("here")
-  // }
+
   const [record, setRecordToEdit] = useState({});
   useEffect(() => {
     try {
@@ -122,8 +123,6 @@ function Edit(props) {
   const handleChange = (event) => {
     console.log(record);
     Object.entries(record).forEach((i) => {
-      console.log(event.target.name);
-      console.log(i);
       if (i[0] == event.target.name) {
         record[event.target.name] = event.target.value;
         setRecordToEdit(record);
@@ -150,7 +149,6 @@ function Edit(props) {
       designation: "Fill Designation",
       image: "",
     });
-
   };
   const renderRecord = (record) => {
     return (
@@ -190,7 +188,7 @@ function Edit(props) {
 
   return (
     <>
-      <Banner name={"Admin"} image={churchWide}></Banner>
+      <Banner name={"Edit Home Page"} image={churchWide}></Banner>
 
       <div className="main-container">
         <br />
@@ -199,9 +197,16 @@ function Edit(props) {
         <br />
         <br />
         {pageName}
-        {console.log(data)}
+
         <Table columns={columns} dataSource={data} />
-        <Button key="Add" onClick={addRecord()}>
+        <Button
+          key="Add"
+          onClick={() => {
+            addRecord();
+            window.location.reload();
+            // setData()
+          }}
+        >
           Add
         </Button>
         <Modal
