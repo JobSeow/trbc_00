@@ -13,7 +13,6 @@ const serviceRoute = require("./routes/ServiceRoute");
 app.use(cors())
 app.use(bodyParser.json())
 app.use("/posts", postRoute);
-
 app.use("/team", teamRoute);
 app.use("/outreach", outreachRoute);
 app.use("/service", serviceRoute);
