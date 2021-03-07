@@ -1,11 +1,11 @@
 const { MongoClient } = require('mongodb');
 const Post = require('./models/Post');
 const Team = require('./models/Team');
-
+require('dotenv').config()
 
 class MongoBot {
   constructor() {
-    const url =  "mongodb+srv://JobSeow:27Jalanmaskuning@trbccluster.lczf3.mongodb.net/trbc?retryWrites=true&w=majority"
+    const url =  process.env.DB_CONNECTION
 
     this.client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
   }
