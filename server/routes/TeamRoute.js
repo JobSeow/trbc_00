@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
 
   async function setTeam() {
     const result = await mongo.Team.setTeam(team);
-    res.json(result);
+    res.json(result.ops);
   }
   setTeam();
 });
@@ -40,7 +40,7 @@ router.put("/", (req, res) => {
   };
   async function updateTeam() {
     const result = await mongo.Team.updateTeam(filter, team);
-    res.json(result);
+    res.json(result.result);
   }
   updateTeam();
 });
