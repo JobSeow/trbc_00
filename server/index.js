@@ -6,15 +6,17 @@ var bodyParser = require('body-parser')
 require("dotenv/config");
 
 const postRoute = require("./routes/PostRoute");
-const userRoute = require("./routes/user");
+
 const teamRoute = require("./routes/TeamRoute");
-const outreachRoute = require("./routes/outreach");
+const outreachRoute = require("./routes/OutreachRoute");
+const serviceRoute = require("./routes/ServiceRoute");
 app.use(cors())
 app.use(bodyParser.json())
 app.use("/posts", postRoute);
-app.use("/user", userRoute);
+
 app.use("/team", teamRoute);
 app.use("/outreach", outreachRoute);
+app.use("/service", serviceRoute);
 
 //routes
 app.get("/", (req, res) => {
@@ -22,9 +24,7 @@ app.get("/", (req, res) => {
 });
 
 async function start() {
-  // other app startup stuff...
   await mongo.init();
-  // other app startup stuff...
 }
 start();
 

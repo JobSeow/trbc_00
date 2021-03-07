@@ -24,10 +24,11 @@ import Home from "./pages/Home";
 
 import Admin from "./pages/admin/Admin";
 
-
 // Backend
 import EditHome from "./pages/admin/EditHome";
 import EditTeam from "./pages/admin/EditTeam";
+import EditOutreach from "./pages/admin/EditOutreach";
+import EditService from "./pages/admin/EditService";
 function App() {
   return (
     <Router>
@@ -58,11 +59,17 @@ function App() {
             component={FacilityBookings}
           />
           <Route path="/trbc_00/resources" component={Resources} />
-          <Route path="/trbc_00/admin" exact  component={Admin} />
+          <Route path="/trbc_00/admin" exact component={Admin} />
           <Route exact path="/trbc_00/admin/home" component={EditHome} />
           <Route exact path="/trbc_00/admin/team" component={EditTeam} />
+          <Route
+            exact
+            path="/trbc_00/admin/outreach"
+            component={EditOutreach}
+          />
+          <Route exact path="/trbc_00/admin/service" component={EditService} />
         </Switch>
-        <br/>
+        <br />
 
         <ContactFooter />
       </div>
