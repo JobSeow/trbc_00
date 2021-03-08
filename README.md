@@ -3,6 +3,8 @@ This project was created with ReactJS, AntDesign, ExpressJS and MongoDB.
 
 The website is live at  [https://fillingthemoon.github.io/trbc_00/](https://fillingthemoon.github.io/trbc_00/).
 
+![ ](https://trbcbucket.s3-ap-southeast-1.amazonaws.com/diagram.JPG)
+
 # Backend
 Overview (Half Assed UML)
 
