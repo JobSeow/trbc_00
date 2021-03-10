@@ -5,7 +5,7 @@ const Outreach = require("./models/Outreach");
 const Service = require("./models/Service");
 require("dotenv").config();
 
-class MongoBot {
+class Mongo {
   constructor() {
     const url = process.env.DB_CONNECTION;
 
@@ -13,18 +13,25 @@ class MongoBot {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    this.db ;
+    this.Post ;
+    this.Team ;
+    this.Outreach;
+    this.Service ;
+
   }
   async init() {
     // Connect the client to the server
     await this.client.connect();
-    // Establish and verify connection
     this.db = this.client.db("trbc");
     this.Post = new Post(this.db);
     this.Team = new Team(this.db);
     this.Outreach = new Outreach(this.db);
     this.Service = new Service(this.db);
+    // Establish and verify connection
+    
     console.log("Connected successfully to server");
   }
 }
 
-module.exports = new MongoBot();
+module.exports = new Mongo();

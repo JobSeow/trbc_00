@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const mongo = require("../mongo");
+const mongo = require("../Mongo");
 
 router.get("/", (req, res) => {
 
