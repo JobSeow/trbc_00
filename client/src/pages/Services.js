@@ -94,7 +94,7 @@ function Services() {
             // Filter according to service
             if (i.congre === service) {
               return (
-                <Col sm={24} lg={12}>
+                <Col sm={24} lg={8}>
                   <Link
                     to={{
                       pathname: `/trbc_00/services/${i.key}`,
@@ -102,6 +102,9 @@ function Services() {
                     }}
                   >
                     <Card
+                    width="100"
+                    height="100"
+           
                       cover={
                         <img
                           alt="example"

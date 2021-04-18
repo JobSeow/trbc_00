@@ -29,6 +29,15 @@ import EditHome from "./pages/admin/EditHome";
 import EditTeam from "./pages/admin/EditTeam";
 import EditOutreach from "./pages/admin/EditOutreach";
 import EditService from "./pages/admin/EditService";
+//import EditHistory from "./pages/admin/EditHistory";
+import EditEnglish from "./pages/admin/EditEnglish";
+import EditChinese from "./pages/admin/EditChinese";
+import EditSunset from "./pages/admin/EditSunset";
+import EditVision from "./pages/admin/EditVision";
+import EditStatement from "./pages/admin/EditStatement";
+import EditMissions from "./pages/admin/EditMissions";
+import EditPage from "./pages/admin/EditPage";
+import EditDiscipleship from "./pages/admin/EditDiscipleship";
 function App() {
   return (
     <Router>
@@ -48,6 +57,7 @@ function App() {
 
           <Route path="/trbc_00/services" exact component={Services} />
           <Route exact path="/trbc_00/outreach/:id" component={Event} />
+          <Route exact path="/trbc_00/mission/:id" component={Event} />
           <Route
             exact
             path="/trbc_00/services/:id"
@@ -68,6 +78,15 @@ function App() {
             component={EditOutreach}
           />
           <Route exact path="/trbc_00/admin/service" component={EditService} />
+          {/* //<Route exact path="/trbc_00/admin/history" component={EditHistory} /> */}
+          <Route exact path="/trbc_00/admin/english" component={EditEnglish} />
+          <Route exact path="/trbc_00/admin/chinese" component={EditChinese} />
+          <Route exact path="/trbc_00/admin/sunset" component={EditSunset} />
+          <Route exact path="/trbc_00/admin/vision" component={EditVision} />
+          <Route exact path="/trbc_00/admin/statement" component={EditStatement} />
+          <Route exact path="/trbc_00/admin/editmissions" component={EditMissions} />
+          <Route exact path="/trbc_00/admin/discipleship" component={EditDiscipleship} />
+          <Route exact path="/trbc_00/admin/editmissions/:id" component={EditPage} />
         </Switch>
         <br />
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useReducer } from "react";
 import Banner from "../../components/Banner";
 
 import {
+  message,
   Card,
   Upload,
   Typography,
@@ -13,12 +14,7 @@ import {
   Form,
   Input,
 } from "antd";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-  UploadOutlined,
-} from "@ant-design/icons";
+
 // Similiar to Our History Page
 import churchWide from "../../imgs/church-wide.jpg";
 import axios from "axios";
@@ -28,21 +24,33 @@ function EditTeam() {
 
   const columns = [
     {
+      key:"name",
       title: "Name",
       dataIndex: "name",
       key: "name",
     },
     {
+      key:"designation",
       title: "Designation",
       dataIndex: "designation",
       key: "designation",
     },
+
     {
+      key:"image",
       title: "image",
-      dataIndex: "image",
       key: "image",
+      render: (text, record) => (
+        <>
+        <Image width={200} src={record.image} />
+        {console.log(text)}
+        {console.log(record.image)}
+        </>
+
+      )
     },
     {
+      key:"action",
       title: "Action",
       key: "action",
       render: (text, record) => (
@@ -62,6 +70,7 @@ function EditTeam() {
   const [data, setData] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [record, setRecordToEdit] = useState({});
+  const [imageToUpload, setImageToUpload] = useState();
 
   const handleOk = () => {
     setIsModalVisible(false);
@@ -103,10 +112,38 @@ function EditTeam() {
     });
   };
   const saveRecord = () => {
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
     axios.put(`http://localhost:8080/team`, record);
   };
   const deleteRecord = () => {
     axios.delete(`http://localhost:8080/team`, { data: record });
+  };
+
+  const onCreateImage = (event) => {
+    const MAX_IMAGE_SIZE = 1000000;
+
+    let reader = new FileReader();
+    reader.onload = (e) => {
+      console.log(e.target);
+      console.log("length: ", e.target.result.includes("data:image/jpeg"));
+      if (!e.target.result.includes("data:image/jpeg")) {
+        return alert("Wrong file type - JPG only.");
+      }
+      if (e.target.result.length > MAX_IMAGE_SIZE) {
+        return alert("Image is loo large.");
+      }
+
+      setImageToUpload(e.target.result);
+
+      record["image"] = e.target.result;
+      setRecordToEdit(record);
+      console.log(record);
+    };
+    reader.readAsDataURL(event.target.files[0]);
   };
 
   return (
@@ -209,16 +246,13 @@ function EditTeam() {
               />
             </Form.Item>
             <Form.Item>
-              <Upload
-                name="logo"
-                action="/upload.do"
-                listType="picture"
-                onChange={handleChange}
-              >
-                <Button icon={<UploadOutlined />}>
-                  Click to upload new image
-                </Button>
-              </Upload>
+              <input
+                type="file"
+                name="image"
+                onChange={(e) => {
+                  onCreateImage(e);
+                }}
+              />
             </Form.Item>
           </Form>
         </Modal>

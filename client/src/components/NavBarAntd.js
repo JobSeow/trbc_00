@@ -152,9 +152,9 @@ const NavBarAntd = () => {
           <Menu.Item key="admin1">
           <Link to="/trbc_00/resources">Resources</Link>
           </Menu.Item>
-          <Menu.Item key="aboutUs2">
+          {/* <Menu.Item key="aboutUs2">
             <Link to="/trbc_00/admin">Admin</Link>
-          </Menu.Item>
+          </Menu.Item> */}
  
         </SubMenu>
         <Menu.Item key="language">

@@ -8,7 +8,7 @@ function Outreach() {
 
   const data = [
     {
-      type: "community",
+      type: "Community",
       key: "Chinese as a Second Language (CSL)",
       summary:
         "The cell group of Chaohua worship began in October 2005, when Preacher Lin Xingcheng and Director Zheng Mei'e each led a group.",
@@ -19,7 +19,7 @@ function Outreach() {
       leader: "Rev Dr Jerry Goh, Rev Dr Jerry Goh",
     },
     {
-      type: "community",
+      type: "Community",
       key: "English as a Second Language (ESL)",
       summary:
         "The cell group of Chaohua worship began in October 2005, when Preacher Lin Xingcheng and Director Zheng Mei'e each led a group.",
@@ -30,7 +30,7 @@ function Outreach() {
       leader: "Rev Dr Jerry Goh, Rev Dr Jerry Goh",
     },
     {
-      type: "ig",
+      type: "Interest Groups",
       key: "Gardening Fellowship",
       summary:
         "The cell group of Chaohua worship began in October 2005, when Preacher Lin Xingcheng and Director Zheng Mei'e each led a group.",
@@ -41,7 +41,7 @@ function Outreach() {
       leader: "Rev Dr Jerry Goh, Rev Dr Jerry Goh",
     },
     {
-      type: "ig",
+      type: "Interest Groups",
       key: "Ping Pong Fellowship",
       summary:
         "The cell group of Chaohua worship began in October 2005, when Preacher Lin Xingcheng and Director Zheng Mei'e each led a group.",
@@ -52,7 +52,7 @@ function Outreach() {
       leader: "Rev Dr Jerry Goh, Rev Dr Jerry Goh",
     },
     {
-      type: "ig",
+      type: "Interest Groups",
       key: "HPB Sit Down Excercises",
       summary:
         "The cell group of Chaohua worship began in October 2005, when Preacher Lin Xingcheng and Director Zheng Mei'e each led a group.",
@@ -62,7 +62,7 @@ function Outreach() {
       location: "Level 2, Joy Room ",
       leader: "Rev Dr Jerry Goh, Rev Dr Jerry Goh",
     },    {
-      type: "children",
+      type: "Children",
       key: "Kindergarten",
       summary:
         "The cell group of Chaohua worship began in October 2005, when Preacher Lin Xingcheng and Director Zheng Mei'e each led a group.",
@@ -72,7 +72,7 @@ function Outreach() {
       location: "Level 2, Joy Room ",
       leader: "Rev Dr Jerry Goh, Rev Dr Jerry Goh",
     },{
-      type: "children",
+      type: "Children",
       key: "CEC",
       summary:
         "The cell group of Chaohua worship began in October 2005, when Preacher Lin Xingcheng and Director Zheng Mei'e each led a group.",
@@ -105,7 +105,7 @@ function Outreach() {
         <Row gutter={[60, 60]}>
           {/* Use map function to reutn Columns of information according to data object above*/}
           {data.map((card) => {
-            if (card.type === "community") {
+            if (card.type === "Community") {
               return (
                 <Col xs={{ span: 12 }} lg={{ span: 8 }} key={card.key}>
                   {/* Will link to Event page, passing card information as the state */}
@@ -141,12 +141,13 @@ function Outreach() {
         <Row gutter={[60, 60]}>
           {/* Use map function to reutn Columns of information according to data object above*/}
           {data.map((card) => {
-            if (card.type === "ig") {
+            if (card.type === "Interest Groups") {
               return (
                 <Col xs={{ span: 12 }} lg={{ span: 8 }} key={card.key}>
                   {/* Will link to Event page, passing card information as the state */}
                   <Link
-                    to={{ pathname: `outreach/${card.text}`, state: card }}
+                   
+                    to={{ pathname: `outreach/${card.key}`, state: card }}
                   >
                     <Image
             
@@ -177,12 +178,12 @@ function Outreach() {
         <Row gutter={[60, 60]}>
           {/* Use map function to reutn Columns of information according to data object above*/}
           {data.map((card) => {
-            if (card.type === "children") {
+            if (card.type === "Children") {
               return (
                 <Col xs={{ span: 12 }} lg={{ span: 8 }} key={card.key}>
                   {/* Will link to Event page, passing card information as the state */}
                   <Link
-                    to={{ pathname: `outreach/${card.text}`, state: card }}
+                     to={{ pathname: `outreach/${card.key}`, state: card }}
                   >
                     <Image
 
